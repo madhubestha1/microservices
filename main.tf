@@ -7,3 +7,8 @@ module "vpc" {
   public_subnet_cidrs  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
   public_subnet_names  = ["public_subnet_1", "public_subnet_2", "public_subnet_3"]
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+  repository_name = "my_app"
+}
