@@ -15,7 +15,7 @@ module "ecr" {
 
 module "eks" {
   source           = "./modules/eks"
-  subnet_ids       = module.vpc.private_subnet_ids
+  subnet_ids       = concat(module.vpc.private_subnet_ids, module.vpc.public_subnet_ids)
   cluster_name     = "my_app"
   node_group_name  = "my_app_node_group"
   desired_capacity = 2
