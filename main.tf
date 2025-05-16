@@ -9,6 +9,18 @@ module "vpc" {
 }
 
 module "ecr" {
-  source = "./modules/ecr"
+  source          = "./modules/ecr"
   repository_name = "my_app"
 }
+
+module "eks" {
+  source           = "./modules/eks"
+  subnet_ids       = module.vpc.private_subnet_ids
+  cluster_name     = "my_app"
+  node_group_name  = "my_app_node_group"
+  desired_capacity = 2
+  max_size         = 3
+  min_size         = 1
+  instance_type    = "t3.medium"
+}
+

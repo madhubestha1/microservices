@@ -3,9 +3,9 @@ output "vpc_id" {
 }
 
 output "public_subnet_ids" {
-  value = element(aws_subnet.public_subnets[*].id, 0)
+  value = aws_subnet.public_subnets[*].id
 }
 
 output "private_subnet_ids" {
-  value = element(aws_subnet.private_subnets[*].id, 0)
+  value = aws_subnet.private_subnets[*].id
 }
